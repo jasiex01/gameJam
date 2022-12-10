@@ -237,7 +237,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11400004, guid: 05a81c3d5091440058129444d28322f3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ToIntro5
+      value: ToIntro6
       objectReference: {fileID: 0}
     - target: {fileID: 11400004, guid: 05a81c3d5091440058129444d28322f3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -771,7 +771,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 14, y: -6}
+  m_AnchoredPosition: {x: 14, y: 57}
   m_SizeDelta: {x: 651.9, y: 249.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1180536626
@@ -795,20 +795,21 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 189a41065dba17d4d92de825d3dc683c, type: 3}
-    m_FontSize: 40
+    m_Font: {fileID: 12800000, guid: b76ccdd5b034ecb4a8b6d3337b14e571, type: 3}
+    m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 4
+    m_MinSize: 3
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Nie zapominaj tak\u017Ce\u2026. (S\u0142ycha\u0107 odg\u0142osy biegn\u0105ce
-    od wej\u015Bcia do twojej siedziby)"
+  m_Text: "Mo\u017Ce Ci si\u0119 zdawa\u0107, \u017Ce sam nie masz szans z tak\u0105
+    si\u0142\u0105 ... i pewnie masz racj\u0119. Ale nie jeste\u015B sam. Masz do
+    pomocy sojusznik\xF3w, kt\xF3rych mo\u017Cesz wezwa\u0107 do walki z kreaturami."
 --- !u!222 &1180536627
 CanvasRenderer:
   m_ObjectHideFlags: 0

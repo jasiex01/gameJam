@@ -30,6 +30,11 @@ public class IntroScript : MonoBehaviour
         Debug.Log("Number = " + messageNum);
     }
 
+    public void ToIntro1()
+    {
+        SceneManager.LoadScene("Intro1");  
+    }
+
     public void ToIntro2()
     {
         SceneManager.LoadScene("Intro2");  
