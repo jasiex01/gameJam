@@ -4,6 +4,7 @@ using System.Linq;
 using ScriptableObjects.Cards;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 
 public class GameMaster : MonoBehaviour
@@ -158,6 +159,12 @@ switch (card)
         foreach (var hero in heroes)
         {
             hero.OnEndTurn();
+        }
+    }
+
+    public void CheckForWin(){
+        if(heroes.Count == 0){
+            SceneManager.LoadScene("Win");
         }
     }
 }

@@ -8,7 +8,7 @@ public class Hero : MonoBehaviour
 {
     public TileMaster tileMaster;
     public GameMaster gameMaster;
-    
+    public AudioClip deathSound;
     public enum Class
     {
         Scout,
@@ -73,7 +73,9 @@ public class Hero : MonoBehaviour
     
     void Die()
     {
+        AudioSource.PlayClipAtPoint(deathSound, currentCell);
         GameMaster.Instance.heroes.Remove(this);
+        GameMaster.Instance.CheckForWin();
         Destroy(gameObject);
     }
 }
