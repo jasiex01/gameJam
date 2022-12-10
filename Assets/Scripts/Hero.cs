@@ -2,6 +2,7 @@ using System.Linq;
 using DG.Tweening;
 using ScriptableObjects;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Hero : MonoBehaviour
 {
@@ -48,7 +49,7 @@ public class Hero : MonoBehaviour
         var targetPosition = tileMaster.tilemap.GetCellCenterWorld(currentCell);
         transform.DOMove(targetPosition, moveAnimation.duration).SetEase(moveAnimation.easeType);
         if(cell == GameMaster.Instance.exitPoint){
-            //game over screend
+            SceneManager.LoadScene("Lose");
         }
     }
 
