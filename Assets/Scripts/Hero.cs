@@ -6,6 +6,7 @@ using UnityEngine;
 public class Hero : MonoBehaviour
 {
     public TileMaster tileMaster;
+    public GameMaster gameMaster;
     
     public enum Class
     {
@@ -17,7 +18,8 @@ public class Hero : MonoBehaviour
 
     public int baseStrength; // 2-3, warrior 2-4
     public int currentStrength;
-
+    public Class @class;
+    
     public Vector3Int goal;
 
     public void OnEndTurn()
@@ -54,5 +56,20 @@ public class Hero : MonoBehaviour
     private void Start()
     {
         transform.position = tileMaster.tilemap.GetCellCenterWorld(currentCell);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        currentStrength -= damage;
+        if (currentStrength <= 0)
+        {
+            Die();
+        }
+    }
+    
+    void Die()
+    {
+        GameMaster.Instance.heroes.Remove(this);
+        Destroy(gameObject);
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using ScriptableObjects;
@@ -5,6 +6,8 @@ using DG.Tweening;
 
 public class CardMaster : MonoBehaviour
 {
+    public static CardMaster Instance { get; private set; }
+    
     public RectTransform anchor;
     public UICard cardPrefab;
     private List<UICard> uiCards = new ();
@@ -14,6 +17,11 @@ public class CardMaster : MonoBehaviour
     public DOTweenAnimationTemplate cardMoveAnimation;
     public DOTweenAnimationTemplate cardScaleAnimation;
     public GameMaster gameMaster;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     public void ResetCards() {
         

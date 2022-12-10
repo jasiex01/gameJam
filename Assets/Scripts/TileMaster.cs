@@ -6,6 +6,8 @@ using UnityEngine.Tilemaps;
 
 public class TileMaster : MonoBehaviour
 {
+    public static TileMaster Instance { get; private set; }
+    
     public Tilemap tilemap;
     public List<TileGameData> tileGameDataList;
     
@@ -26,6 +28,7 @@ public class TileMaster : MonoBehaviour
     
     private void Awake()
     {
+        Instance = this;
         foreach (var tileData in tileGameDataList)
         {
             foreach (var tile in tileData.tiles)

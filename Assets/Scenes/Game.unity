@@ -237,8 +237,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileMaster: {fileID: 1103164474}
+  gameMaster: {fileID: 0}
   baseStrength: 3
   currentStrength: 3
+  class: 1
   goal: {x: 4, y: 0, z: 0}
   currentCell: {x: -5, y: 1, z: 0}
   moveAnimation: {fileID: 11400000, guid: 882a842d7d929924894633d75b1ed320, type: 2}
@@ -288,7 +290,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anchor: {fileID: 1682071233}
   cardPrefab: {fileID: -9161121824597019009, guid: e320b033016fa7144a4aa398c9338262, type: 3}
-  initialCardCount: 5
+  initialCardCount: 2
   spacing: 100
   cardMoveAnimation: {fileID: 11400000, guid: 0923436155b591c48a5c27e9aa47d5b0, type: 2}
   cardScaleAnimation: {fileID: 11400000, guid: 027537a480467c54c8fb466779016219, type: 2}
@@ -428,7 +430,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -1424,8 +1426,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e7c5ab8b51affc4f9a9c175c5687625, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileMaster: {fileID: 1103164474}
-  cardMaster: {fileID: 486368193}
   cursor: {fileID: 1514638440}
   heroes:
   - {fileID: 1450640216}
@@ -1989,10 +1989,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileMaster: {fileID: 1103164474}
+  gameMaster: {fileID: 0}
   baseStrength: 3
   currentStrength: 3
+  class: 0
   goal: {x: 4, y: 0, z: 0}
-  currentCell: {x: -5, y: -2, z: 0}
+  currentCell: {x: -5, y: 1, z: 0}
   moveAnimation: {fileID: 11400000, guid: 882a842d7d929924894633d75b1ed320, type: 2}
 --- !u!4 &1450640217
 Transform:
