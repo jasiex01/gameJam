@@ -8,7 +8,9 @@ public class GameMaster : MonoBehaviour
     public TileMaster tileMaster;
     public CardMaster cardMaster;
     public GridCursor cursor;
-    private UICard chosenCard;
+    private ScriptableObjects.Cards.Card activeCard;
+
+    public List<Hero> heroes;
     
     void Start()
     {
@@ -21,18 +23,23 @@ public class GameMaster : MonoBehaviour
             ResetCards();
         }
     }
-    public void onCardClicked(UICard card){
-        chosenCard = card;
+    public void OnCardClicked(UICard uiCard){
+        activeCard = uiCard.card;
         cursor.ChangeVisibility(true);
     }
 
     private void ResetCards(){
-        chosenCard = null;
+        activeCard = null;
         cursor.ChangeVisibility(false);
         cardMaster.ResetCards();
     }
 
-    public void EndTurn(){
+    public void EndTurn()
+    {
         ResetCards();
+        foreach (var hero in heroes)
+        {
+            hero.OnEndTurn();
+        }
     }
 }
