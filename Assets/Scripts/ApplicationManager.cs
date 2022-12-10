@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class ApplicationManager : MonoBehaviour {
@@ -13,6 +14,10 @@ public class ApplicationManager : MonoBehaviour {
 		Debug.Log("Tutorial");
 	}
 
+	public void BackToMenu() 
+	{
+		SceneManager.LoadScene("Menu");
+	}
 	public void Quit () 
 	{
 		#if UNITY_EDITOR
