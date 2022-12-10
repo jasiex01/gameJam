@@ -4,10 +4,11 @@ using UnityEngine;
 
 namespace ScriptableObjects.Cards
 {
-    [CreateAssetMenu(fileName = "new LureCard", menuName = "Cards/Lure Card", order = 0)]
-    public class LureCard : Card
+    [CreateAssetMenu(fileName = "new TrapCard", menuName = "Cards/Trap Card", order = 0)]
+    public class TrapCard : Card
     {
-        public Sprite lure;
-        public List<Hero.Class> effectiveFor;
+        public Sprite trap;
+        public int strength;
+        public Hero.Class counteredBy;
     }
 }

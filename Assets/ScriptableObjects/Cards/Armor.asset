@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 733a91558c2215e43b9e9caca779f4fc, type: 3}
   m_Name: Armor
-  m_EditorClassIdentifier: Assembly-CSharp:ScriptableObjects.Cards:LureCard
+  m_EditorClassIdentifier: 
   card: {fileID: 0}
-  description: "Zagraj na pole s\u0105siaduj\u0105ce z bohaterem. Zwab wszystkich
-    kleryk\xF3w i wojownik\xF3w na to pole."
+  description: 
   lure: {fileID: 0}
-  effectiveFor: 0200000003000000
+  effectiveFor: 0300000002000000
