@@ -5,16 +5,16 @@ using UnityEngine.InputSystem;
 
 public class GameMaster : MonoBehaviour
 {
+    public TileMaster tileMaster;
     public CardMaster cardMaster;
     public GridCursor cursor;
     private UICard chosenCard;
-    // Start is called before the first frame update
+    
     void Start()
     {
         ResetCards();
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         if(Keyboard.current.spaceKey.wasPressedThisFrame){
