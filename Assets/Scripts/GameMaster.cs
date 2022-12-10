@@ -107,15 +107,11 @@ switch (card)
 
     void Start()
     {
-        ResetCards();
+        CardMaster.Instance.DrawNewHand();
     }
     
     void Update()
     {
-        if(Keyboard.current.spaceKey.wasPressedThisFrame){
-            ResetCards();
-        }
-        
         if (activeCard != null)
         {
             cursor.ChangeVisibility(true);
@@ -129,6 +125,7 @@ switch (card)
                 {
                     UseCard(activeCard, cursor.cell);
                     CardMaster.Instance.RemoveActiveCard();
+                    CardInfo.Instance.UpdateInfo(null);
                     activeCard = null;
                 }
             }
@@ -140,18 +137,15 @@ switch (card)
     }
     public void OnCardClicked(UICard uiCard){
         activeCard = uiCard.card;
+        CardInfo.Instance.UpdateInfo(activeCard);
         cursor.ChangeVisibility(true);
-    }
-
-    private void ResetCards(){
-        activeCard = null;
-        cursor.ChangeVisibility(false);
-        CardMaster.Instance.ResetCards();
     }
 
     public void EndTurn()
     {
-        ResetCards();
+        CardMaster.Instance.DrawNewHand();
+        activeCard = null;
+        cursor.ChangeVisibility(false);
         foreach (var hero in heroes)
         {
             hero.OnEndTurn();

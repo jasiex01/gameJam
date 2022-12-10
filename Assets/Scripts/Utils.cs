@@ -29,4 +29,14 @@ public static class Utils
             set { base[key] = value; }
         }
     }
+    
+    // https://forum.unity.com/threads/clever-way-to-shuffle-a-list-t-in-one-line-of-c-code.241052/
+    public static void Shuffle<T>(this IList<T> ts) {
+        var count = ts.Count;
+        var last = count - 1;
+        for (var i = 0; i < last; ++i) {
+            var r = UnityEngine.Random.Range(i, count);
+            (ts[i], ts[r]) = (ts[r], ts[i]);
+        }
+    }
 }

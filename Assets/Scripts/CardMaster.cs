@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using ScriptableObjects;
 using DG.Tweening;
+using ScriptableObjects.Cards;
 
 public class CardMaster : MonoBehaviour
 {
@@ -16,11 +18,49 @@ public class CardMaster : MonoBehaviour
     public float spacing;
     public DOTweenAnimationTemplate cardMoveAnimation;
     public DOTweenAnimationTemplate cardScaleAnimation;
-    public GameMaster gameMaster;
+
+    public Deck deckTemplate;
+    public List<Card> deck = new ();
 
     private void Awake()
     {
         Instance = this;
+    }
+
+    public Card DrawCard()
+    {
+        if (deck.Count == 0)
+        {
+            deck = new List<Card>(deckTemplate.deck);
+            deck.Shuffle();
+        }
+
+        var card = deck[0];
+        deck.RemoveAt(0);
+        return card;
+    }
+
+    public void DrawNewHand()
+    {
+        for (int i = 0; i < uiCards.Count; i++)
+        {
+            uiCards[i].transform.DOKill();
+            Destroy(uiCards[i].gameObject);
+        }
+
+        uiCards.Clear();
+        
+        for (int i = 0; i < initialCardCount; i++)
+        {
+            var card = DrawCard();
+            var uiCard = Instantiate(cardPrefab, anchor);
+            uiCard.cardMaster = this;
+            uiCard.card = card;
+            uiCard.transform.localPosition = new Vector3(0,-300,0);
+            uiCards.Add(uiCard);
+        }
+        
+        UpdateCards();
     }
 
     public void ResetCards() {
@@ -55,7 +95,7 @@ public class CardMaster : MonoBehaviour
         uiCard.transform.DOScale(new Vector3(1.2f,1.2f,1.2f), cardScaleAnimation.duration);
 
         activeUiCard = uiCard;
-        gameMaster.OnCardClicked(uiCard);
+        GameMaster.Instance.OnCardClicked(uiCard);
         
         foreach (var c in uiCards)
         {
