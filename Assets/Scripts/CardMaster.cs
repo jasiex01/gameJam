@@ -8,6 +8,7 @@ public class CardMaster : MonoBehaviour
     public RectTransform anchor;
     public UICard cardPrefab;
     private List<UICard> uiCards = new ();
+    private UICard activeUiCard;
     public int initialCardCount;
     public float spacing;
     public DOTweenAnimationTemplate cardMoveAnimation;
@@ -23,7 +24,7 @@ public class CardMaster : MonoBehaviour
         }
 
         uiCards.Clear();
-        // Instantiate cards
+        
         for (int i = 0; i < initialCardCount; i++){
             var newCard = Instantiate(cardPrefab, anchor);
             newCard.cardMaster = this;
@@ -42,14 +43,27 @@ public class CardMaster : MonoBehaviour
         }
     }
 
-    public void OnCardClicked(UICard card){
-        card.transform.DOScale(new Vector3(1.2f,1.2f,1.2f), cardScaleAnimation.duration);
+    public void OnCardClicked(UICard uiCard){
+        uiCard.transform.DOScale(new Vector3(1.2f,1.2f,1.2f), cardScaleAnimation.duration);
 
-        gameMaster.OnCardClicked(card);
+        activeUiCard = uiCard;
+        gameMaster.OnCardClicked(uiCard);
         
-        for (int i = 0; i < initialCardCount; i++){
-            if(uiCards[i] != card)
-                uiCards[i].transform.DOScale(new Vector3(1,1,1), cardScaleAnimation.duration);
+        foreach (var c in uiCards)
+        {
+            if (c != uiCard)
+            {
+                c.transform.DOScale(new Vector3(0.8f,0.8f,0.8f), cardScaleAnimation.duration);
+            }
         }
+    }
+    
+    public void RemoveActiveCard()
+    {
+        uiCards.Remove(activeUiCard);
+        activeUiCard.transform.DOKill();
+        Destroy(activeUiCard.gameObject);
+        activeUiCard = null;
+        UpdateCards();
     }
 }

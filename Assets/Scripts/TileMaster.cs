@@ -11,9 +11,19 @@ public class TileMaster : MonoBehaviour
     
     Dictionary<Tile, TileGameData> tileGameDataDictionary = new ();
     
-    Dictionary<Vector3Int, Pathfinding.Node> pathfindingNodeDictionary;
+    Dictionary<Vector3Int, Pathfinding.Node> pathfindingNodeDictionary = new ();
     public Pathfinding.Node GetPathfindingNode(Vector3Int position) => pathfindingNodeDictionary[position];
 
+    public void RebuildPathfindingNodes()
+    {
+        var nodes = Pathfinding.GetPathfindingNodes(this);
+        pathfindingNodeDictionary.Clear();
+        foreach (var node in nodes)
+        {
+            pathfindingNodeDictionary.Add(new Vector3Int(node.x, node.y, 0), node);
+        }
+    }
+    
     private void Awake()
     {
         foreach (var tileData in tileGameDataList)
@@ -23,13 +33,8 @@ public class TileMaster : MonoBehaviour
                 tileGameDataDictionary.Add(tile, tileData);
             }
         }
-
-        var nodes = Pathfinding.GetPathfindingNodes(this);
-        pathfindingNodeDictionary = new Dictionary<Vector3Int, Pathfinding.Node>();
-        foreach (var node in nodes)
-        {
-            pathfindingNodeDictionary.Add(new Vector3Int(node.x, node.y, 0), node);
-        }
+        
+        RebuildPathfindingNodes();
     }
     
     public TileGameData GetTileGameData(Tile tile)

@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 429add6aa7eb6e646bde44eb94b68d64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileMaster: {fileID: 821969407}
+  tileMaster: {fileID: 1103164474}
   baseStrength: 3
   currentStrength: 3
   goal: {x: 4, y: 0, z: 0}
@@ -1559,7 +1559,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1122307405
 GameObject:
@@ -1988,7 +1988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 429add6aa7eb6e646bde44eb94b68d64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileMaster: {fileID: 821969407}
+  tileMaster: {fileID: 1103164474}
   baseStrength: 3
   currentStrength: 3
   goal: {x: 4, y: 0, z: 0}
@@ -2044,9 +2044,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b32e866d9b244945aadb36cd4621edfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileMaster: {fileID: 0}
+  tileMaster: {fileID: 1103164474}
   camera: {fileID: 1235878019}
-  position: {x: 0, y: 0, z: 0}
+  validColor: {r: 1, g: 1, b: 1, a: 1}
+  invalidColor: {r: 0.6415094, g: 0.19003202, b: 0.19003202, a: 1}
+  cell: {x: 0, y: 0, z: 0}
   animationTemplate: {fileID: 11400000, guid: b6d27d3a40638714287e9024762656a1, type: 2}
 --- !u!212 &1514638441
 SpriteRenderer:
