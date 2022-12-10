@@ -2,12 +2,13 @@ using System.Linq;
 using DG.Tweening;
 using ScriptableObjects;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Hero : MonoBehaviour
 {
     public TileMaster tileMaster;
     public GameMaster gameMaster;
-    
+    public AudioClip deathSound;
     public enum Class
     {
         Scout,
@@ -47,6 +48,9 @@ public class Hero : MonoBehaviour
         currentCell = cell;
         var targetPosition = tileMaster.tilemap.GetCellCenterWorld(currentCell);
         transform.DOMove(targetPosition, moveAnimation.duration).SetEase(moveAnimation.easeType);
+        if(cell == GameMaster.Instance.exitPoint){
+            SceneManager.LoadScene("Lose");
+        }
     }
 
     public Vector3Int currentCell;
@@ -69,7 +73,9 @@ public class Hero : MonoBehaviour
     
     void Die()
     {
+        AudioSource.PlayClipAtPoint(deathSound, currentCell);
         GameMaster.Instance.heroes.Remove(this);
+        GameMaster.Instance.CheckForWin();
         Destroy(gameObject);
     }
 }
