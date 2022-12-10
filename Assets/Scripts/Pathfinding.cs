@@ -9,6 +9,8 @@ namespace DefaultNamespace
         {
             var openSet = new HashSet<Vector3Int>();
             var closedSet = new HashSet<Vector3Int>();
+            
+            
         }
     }
 }

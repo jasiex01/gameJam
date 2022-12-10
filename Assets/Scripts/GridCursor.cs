@@ -11,6 +11,7 @@ namespace DefaultNamespace
     public class GridCursor : MonoBehaviour
     {
         public TileMaster tileMaster;
+        public new Camera camera;
         private Mouse mouse;
         private SpriteRenderer spriteRenderer;
         
@@ -27,7 +28,7 @@ namespace DefaultNamespace
         private void Update()
         {
             var mousePosition = mouse.position.ReadValue();
-            var mouseWorldPosition = Camera.current.ScreenToWorldPoint(mousePosition);
+            var mouseWorldPosition = camera.ScreenToWorldPoint(mousePosition);
             var newPosition = tileMaster.tilemap.WorldToCell(mouseWorldPosition);
             if (newPosition != position)
             {
