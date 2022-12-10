@@ -31,4 +31,8 @@ public class GameMaster : MonoBehaviour
         cursor.ChangeVisibility(false);
         cardMaster.ResetCards();
     }
+
+    public void EndTurn(){
+        ResetCards();
+    }
 }
