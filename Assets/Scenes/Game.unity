@@ -1307,6 +1307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e7c5ab8b51affc4f9a9c175c5687625, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileMaster: {fileID: 0}
   cardMaster: {fileID: 486368193}
   cursor: {fileID: 1514638440}
 --- !u!4 &870334160
@@ -1531,7 +1532,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4998882267916259553, guid: 208faf290804190438e0504363ce6476, type: 3}
       propertyPath: m_Text
-      value: End turn
+      value: Koniec tury
       objectReference: {fileID: 0}
     - target: {fileID: 5423131764771513311, guid: 208faf290804190438e0504363ce6476, type: 3}
       propertyPath: m_Pivot.x
@@ -1819,7 +1820,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 429add6aa7eb6e646bde44eb94b68d64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grid: {fileID: 2095231797}
+  tileMaster: {fileID: 0}
+  baseStrength: 0
+  currentStrength: 0
+  goal: {x: 0, y: 0, z: 0}
   currentCell: {x: 0, y: 0, z: 0}
   moveAnimation: {fileID: 11400000, guid: 882a842d7d929924894633d75b1ed320, type: 2}
 --- !u!4 &1450640217

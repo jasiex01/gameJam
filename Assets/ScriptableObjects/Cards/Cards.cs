@@ -38,4 +38,9 @@ namespace ScriptableObjects.Cards
     {
         public Tile tile;
     }
+    [CreateAssetMenu(fileName = "new Deck", menuName = "Cards/Deck", order = 0)]
+    public class Deck : ScriptableObject
+    {
+        public List<Card> deck;
+    }
 }

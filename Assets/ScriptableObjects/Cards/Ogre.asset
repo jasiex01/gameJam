@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Ogre
   m_EditorClassIdentifier: Assembly-CSharp:ScriptableObjects.Cards:MonsterCard
   card: {fileID: 0}
-  description: 
-  strength: 0
-  weakAgainst: 0
-  strongAgainst: 0
+  description: Zagraj na bohatera
+  strength: 2
+  weakAgainst: 2
+  strongAgainst: 1

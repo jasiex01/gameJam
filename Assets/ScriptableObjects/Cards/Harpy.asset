@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: Relic
-  m_EditorClassIdentifier: Assembly-CSharp:ScriptableObjects.Cards:LureCard
+  m_Name: Harpy
+  m_EditorClassIdentifier: Assembly-CSharp:ScriptableObjects.Cards:MonsterCard
   card: {fileID: 0}
-  description: "Zagraj na pole s\u0105siaduj\u0105ce z bohaterem. Zwab wszystkich
-    kleryk\xF3w i mag\xF3w na to pole."
-  lure: {fileID: 0}
-  effectiveFor: 0100000003000000
+  description: Zagraj na bohatera
+  strength: 2
+  weakAgainst: 0
+  strongAgainst: 2

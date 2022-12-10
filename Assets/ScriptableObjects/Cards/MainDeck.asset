@@ -12,4 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: MainDeck
   m_EditorClassIdentifier: Assembly-CSharp:ScriptableObjects.Cards:Deck
-  deck: []
+  deck:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
