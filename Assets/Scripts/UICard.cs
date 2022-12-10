@@ -7,21 +7,18 @@ using UnityEngine.UI;
 public class UICard : MonoBehaviour, IPointerClickHandler
 {
     public CardMaster cardMaster;
+    public Sprite sprite;
+    
+    public Cards.BaseCard cardData;
+    
     private Image image;
     public void OnPointerClick(PointerEventData eventData)
     {
         cardMaster.OnCardClicked(this);
     }
 
-    // Start is called before the first frame update
     void Awake()
     {
         image = GetComponent<Image>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
