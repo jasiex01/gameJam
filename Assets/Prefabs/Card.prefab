@@ -91,4 +91,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardMaster: {fileID: 0}
   sprite: {fileID: 0}
-  card: {fileID: 11400000, guid: 103fb35163094aa40bcb6e835d056274, type: 2}
+  card: {fileID: 0}

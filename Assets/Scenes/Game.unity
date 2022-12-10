@@ -1669,7 +1669,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4998882267916259553, guid: 208faf290804190438e0504363ce6476, type: 3}
       propertyPath: m_Text
-      value: End turn
+      value: Koniec tury
       objectReference: {fileID: 0}
     - target: {fileID: 5423131764771513311, guid: 208faf290804190438e0504363ce6476, type: 3}
       propertyPath: m_Pivot.x
