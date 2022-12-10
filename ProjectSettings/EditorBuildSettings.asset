@@ -9,24 +9,28 @@ EditorBuildSettings:
     path: Assets/Scenes/Game.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/Intro/Intro1.unity
-    guid: 2fcc0593af1268f48a5971afecc206bc
-  - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: c7b570f3085c33d47a949c44c283762c
   - enabled: 1
+    path: Assets/Scenes/Intro/Intro1.unity
+    guid: 2fcc0593af1268f48a5971afecc206bc
+  - enabled: 1
     path: Assets/Scenes/Intro/Intro2.unity
-    guid: df6d9400fbed6b948aaafdc51fb655ea
+    guid: 95dc3d60cd5812c45bfc78b3e77bae54
   - enabled: 1
     path: Assets/Scenes/Intro/Intro3.unity
-    guid: 7ec78ce9a47f4a54b9f012af4e9326ab
-  - enabled: 1
-    path: Assets/Scenes/Intro/Intro4.unity
-    guid: 7e51e8c1861231b4fae6908b9a49114d
+    guid: 6ff627ae65cd27c40828769a66461210
   - enabled: 1
     path: Assets/Scenes/Intro/Intro5.unity
-    guid: 393aac4913e933748a94d230c4743bdb
+    guid: 51b906985fa588e48a4d593726c624f6
+  - enabled: 1
+    path: Assets/Scenes/Intro/Intro4.unity
+    guid: 067ff2d925eb6b24d815a365abdf5063
   - enabled: 1
     path: Assets/Scenes/Intro/Intro6.unity
-    guid: a108a6c9f5afe7643acfe9e44459df19
+    guid: 5a150e01878df124fb74eb244403fc6c
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: 86ae0fe9a09009a459ae7b39a5fb4939
+
   m_configObjects: {}

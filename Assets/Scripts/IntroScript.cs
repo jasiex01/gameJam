@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement; 
+using UnityEngine.SceneManagement;
 
 public class IntroScript : MonoBehaviour
 {
@@ -32,13 +32,11 @@ public class IntroScript : MonoBehaviour
 
     public void ToIntro1()
     {
-        Debug.Log("To Intro1");
         SceneManager.LoadScene("Intro1");  
     }
 
     public void ToIntro2()
     {
-        Debug.Log("To Intro2");
         SceneManager.LoadScene("Intro2");  
     }
 
@@ -47,5 +45,23 @@ public class IntroScript : MonoBehaviour
         SceneManager.LoadScene("Intro3");  
     }
 
+    public void ToIntro4()
+    {
+        SceneManager.LoadScene("Intro4");  
+    }
 
+    public void ToIntro5()
+    {
+        SceneManager.LoadScene("Intro5");  
+    }
+
+    public void ToIntro6()
+    {
+        SceneManager.LoadScene("Intro6");  
+    }
+
+    public void ToGame()
+    {
+        SceneManager.LoadScene("Game");  
+    }
 }
