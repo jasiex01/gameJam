@@ -153,7 +153,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anchor: {fileID: 1228893931}
-  card: {fileID: 2529691744493462414, guid: e320b033016fa7144a4aa398c9338262, type: 3}
+  cardPrefab: {fileID: -9161121824597019009, guid: e320b033016fa7144a4aa398c9338262, type: 3}
+  cardCount: 5
+  spacing: 100
+  cardMoveAnimation: {fileID: 11400000, guid: 0923436155b591c48a5c27e9aa47d5b0, type: 2}
+  cardScaleAnimation: {fileID: 11400000, guid: 027537a480467c54c8fb466779016219, type: 2}
 --- !u!4 &805063546
 Transform:
   m_ObjectHideFlags: 0
@@ -1785,7 +1789,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1235878019}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
