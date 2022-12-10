@@ -1570,6 +1570,10 @@ MonoBehaviour:
   heroes:
   - {fileID: 1450640216}
   - {fileID: 390408553}
+  entryPoints:
+  - {x: -6, y: 1, z: 0}
+  - {x: -6, y: -2, z: 0}
+  exitPoint: {x: 4, y: 0, z: 0}
 --- !u!4 &870334160
 Transform:
   m_ObjectHideFlags: 0

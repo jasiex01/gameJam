@@ -15,6 +15,9 @@ public class GameMaster : MonoBehaviour
 
     public List<Hero> heroes;
 
+    public List<Vector3Int> entryPoints;
+    public Vector3Int exitPoint;
+
     public bool IsCellAValidTarget(Vector3Int cell, Card card)
     {
         var tile = TileMaster.Instance.tilemap.GetTile<Tile>(cell);

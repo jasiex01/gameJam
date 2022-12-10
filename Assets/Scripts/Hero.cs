@@ -47,6 +47,9 @@ public class Hero : MonoBehaviour
         currentCell = cell;
         var targetPosition = tileMaster.tilemap.GetCellCenterWorld(currentCell);
         transform.DOMove(targetPosition, moveAnimation.duration).SetEase(moveAnimation.easeType);
+        if(cell == GameMaster.Instance.exitPoint){
+            //game over screend
+        }
     }
 
     public Vector3Int currentCell;
