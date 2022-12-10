@@ -16,6 +16,8 @@ public class CardMaster : MonoBehaviour
     public float spacing;
     public DOTweenAnimationTemplate cardMoveAnimation;
     public DOTweenAnimationTemplate cardScaleAnimation;
+    private UICard chosenCard = null;
+    public GridCursor cursor;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +26,8 @@ public class CardMaster : MonoBehaviour
     }
 
     private void ResetCards() {
+        chosenCard = null;
+        cursor.ChangeVisibility(false);
         for (int i = 0; i < cardList.Count; i++){
             Destroy(cardList[i].gameObject);
         }
@@ -56,7 +60,8 @@ public class CardMaster : MonoBehaviour
 
     public void OnCardClicked(UICard card){
         card.transform.DOScale(new Vector3(1.2f,1.2f,1.2f), cardScaleAnimation.duration);
-
+        chosenCard = card;
+        cursor.ChangeVisibility(true);
         for (int i = 0; i < cardCount; i++){
             if(cardList[i] != card)
                 cardList[i].transform.DOScale(new Vector3(1,1,1), cardScaleAnimation.duration);

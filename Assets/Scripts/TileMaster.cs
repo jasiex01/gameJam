@@ -4,8 +4,7 @@ using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace DefaultNamespace
-{
+
     public class TileMaster : MonoBehaviour
     {
         public Tilemap tilemap;
@@ -29,4 +28,3 @@ namespace DefaultNamespace
             return tileGameDataDictionary[tile];
         }
     }
-}
