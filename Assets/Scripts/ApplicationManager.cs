@@ -19,6 +19,16 @@ public class ApplicationManager : MonoBehaviour {
 		SceneManager.LoadScene("Intro1");  
 	}
 
+	public void ToMenu()
+	{
+		SceneManager.LoadScene("Menu");
+	}
+
+	public void ToTutorial()
+	{
+		SceneManager.LoadScene("Tutorial");
+	}
+
 	public void Quit () 
 	{
 		#if UNITY_EDITOR
