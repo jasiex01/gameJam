@@ -35,5 +35,30 @@ public class IntroScript : MonoBehaviour
         SceneManager.LoadScene("Intro2");  
     }
 
+    public void ToIntro3()
+    {
+        SceneManager.LoadScene("Intro3");  
+    }
+
+    public void ToIntro4()
+    {
+        SceneManager.LoadScene("Intro4");  
+    }
+
+    public void ToIntro5()
+    {
+        SceneManager.LoadScene("Intro5");  
+    }
+
+    public void ToIntro6()
+    {
+        SceneManager.LoadScene("Intro6");  
+    }
+
+    public void ToGame()
+    {
+        SceneManager.LoadScene("Game");  
+    }
+
 
 }
