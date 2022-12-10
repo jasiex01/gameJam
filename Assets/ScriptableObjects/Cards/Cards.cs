@@ -2,32 +2,31 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace Cards
+namespace ScriptableObjects.Cards
 {
-    // [CreateAssetMenu(fileName = "FILENAME", menuName = "MENUNAME", order = 0)]
-    public abstract class BaseCard : ScriptableObject
+    public abstract class Card : ScriptableObject
     {
         public Sprite card;
         public string description;
     }
 
     [CreateAssetMenu(fileName = "new MonsterCard", menuName = "Cards/Monster Card", order = 0)]
-    public class MonsterCard : BaseCard
+    public class MonsterCard : Card
     {
         public int strength;
         public Hero.Class weakAgainst;
         public Hero.Class strongAgainst;
     }
 
-    [CreateAssetMenu(fileName = "new LureCard", menuName = "Cards/Monster Card", order = 0)]
-    public class LureCard : BaseCard
+    [CreateAssetMenu(fileName = "new LureCard", menuName = "Cards/Lure Card", order = 0)]
+    public class LureCard : Card
     {
         public Sprite lure;
         public List<Hero.Class> effectiveFor;
     }
     
-    [CreateAssetMenu(fileName = "new TrapCard", menuName = "Cards/Monster Card", order = 0)]
-    public class TrapCard : BaseCard
+    [CreateAssetMenu(fileName = "new TrapCard", menuName = "Cards/Trap Card", order = 0)]
+    public class TrapCard : Card
     {
         public Sprite trap;
         public int strength;
@@ -35,7 +34,7 @@ namespace Cards
     }
 
     [CreateAssetMenu(fileName = "new ObstacleCard", menuName = "Cards/Obstacle Card", order = 0)]
-    public class ObstacleCard : BaseCard
+    public class ObstacleCard : Card
     {
         public Tile tile;
     }
