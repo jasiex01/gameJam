@@ -24,7 +24,7 @@ public class Hero : MonoBehaviour
         currentCell += direction;
         Debug.Log(direction);
         var targetPosition = grid.GetCellCenterWorld(currentCell);
-        transform.DOMove(targetPosition, moveAnimation.duration).SetEase(moveAnimation.ease);
+        transform.DOMove(targetPosition, moveAnimation.duration).SetEase(moveAnimation.easeType);
     }
 
     //! DEBUG ONLY

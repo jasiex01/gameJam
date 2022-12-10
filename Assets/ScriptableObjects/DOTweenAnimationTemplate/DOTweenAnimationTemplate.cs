@@ -8,6 +8,6 @@ namespace ScriptableObjects
     {
         [Min(0)]
         public float duration;
-        public Ease ease;
+        public Ease easeType;
     }
 }
