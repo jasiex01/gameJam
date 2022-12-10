@@ -8,8 +8,8 @@ public class UICard : MonoBehaviour, IPointerClickHandler
 {
     public CardMaster cardMaster;
     public Sprite sprite;
-    
-    public Cards.BaseCard cardData;
+
+    public ScriptableObjects.Cards.Card card;
     
     private Image image;
     public void OnPointerClick(PointerEventData eventData)

@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class ApplicationManager : MonoBehaviour {
 	
-	public void Start()
+	public void StartGame()
 	{
-		Debug.Log("HELLO");
+		Debug.Log("Go to intro");
+		SceneManager.LoadScene("Intro1");  
 	}
 
 	public void Tutorial()
@@ -18,6 +20,7 @@ public class ApplicationManager : MonoBehaviour {
 	{
 		SceneManager.LoadScene("Menu");
 	}
+
 	public void Quit () 
 	{
 		#if UNITY_EDITOR
