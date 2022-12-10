@@ -11,7 +11,7 @@ namespace DefaultNamespace
         public Tilemap tilemap;
         public List<TileGameData> tileGameDataList;
         
-        public Dictionary<Tile, TileGameData> tileGameDataDictionary = new ();
+        Dictionary<Tile, TileGameData> tileGameDataDictionary = new ();
 
         private void Awake()
         {
@@ -27,6 +27,17 @@ namespace DefaultNamespace
         public TileGameData GetTileGameData(Tile tile)
         {
             return tileGameDataDictionary[tile];
+        }
+        
+        public float GetTileCost(Tile tile)
+        {
+            if (tile == null)
+            {
+                return float.PositiveInfinity;
+            }
+            
+            var tileGameData = GetTileGameData(tile);
+            return tileGameData.Cost;
         }
     }
 }

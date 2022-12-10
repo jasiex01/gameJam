@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: WallTileData
   m_EditorClassIdentifier: 
   tiles:
+  - {fileID: 11400000, guid: 0ac2dc3122779ab45bb0bc225c2d0504, type: 2}
   - {fileID: 11400000, guid: b8659a1968089f141aa15812d67c4cb5, type: 2}
   - {fileID: 11400000, guid: ba8614dbcb127864cb3d84b64efb2442, type: 2}
   - {fileID: 11400000, guid: be2de32cd17ed8a4c982ca777758767c, type: 2}
   - {fileID: 11400000, guid: b88b1a7618beafd448df4fce2bc6fc6a, type: 2}
   passable: 0
-  movementCost: 0
+  baseCost: 0

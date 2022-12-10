@@ -10,6 +10,8 @@ namespace ScriptableObjects
         public List<Tile> tiles;
 
         public bool passable;
-        public float movementCost;
+        [SerializeField]
+        float baseCost;
+        public float Cost => passable ? baseCost : float.PositiveInfinity;
     }
 }

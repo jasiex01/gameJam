@@ -14,7 +14,7 @@ namespace DefaultNamespace
         public new Camera camera;
         private Mouse mouse;
         private SpriteRenderer spriteRenderer;
-        
+
         public Vector3Int position;
 
         public DOTweenAnimationTemplate animationTemplate;
@@ -36,7 +36,7 @@ namespace DefaultNamespace
                 transform.DOMove(targetWorldPosition, animationTemplate.duration).SetEase(animationTemplate.easeType);
                 position = newPosition;
             }
-            
+
             var tile = tileMaster.tilemap.GetTile<Tile>(position);
             if (tile != null && tileMaster.GetTileGameData(tile).passable)
             {
