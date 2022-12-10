@@ -18,5 +18,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ba8614dbcb127864cb3d84b64efb2442, type: 2}
   - {fileID: 11400000, guid: be2de32cd17ed8a4c982ca777758767c, type: 2}
   - {fileID: 11400000, guid: b88b1a7618beafd448df4fce2bc6fc6a, type: 2}
+  - {fileID: 11400000, guid: 4536879dd7bde69419f79fea466f9fcf, type: 2}
   passable: 0
   baseCost: 0
