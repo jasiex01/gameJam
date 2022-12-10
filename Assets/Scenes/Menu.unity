@@ -348,6 +348,7 @@ PrefabInstance:
       value: 'Nasza gra
 
 '
+      value: Nasza graqqq
       objectReference: {fileID: 0}
     - target: {fileID: 3908627308729501793, guid: a93c012dd9ef6454fa7d140e976926f7, type: 3}
       propertyPath: m_FontData.m_Font
