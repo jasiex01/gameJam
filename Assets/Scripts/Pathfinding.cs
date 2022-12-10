@@ -7,18 +7,20 @@ using UnityEngine.Tilemaps;
 public static class Pathfinding
 {
     
-    public class PathfindingNode
+    public class Node
     {
         public int x;
         public int y;
         public float entranceCost;
-        public HashSet<PathfindingNode> neighbors;
+        public HashSet<Node> neighbors;
+        
+        public Vector3Int ToVector3Int() => new Vector3Int(x, y, 0);
     }
 
-    public static List<PathfindingNode> GetPathfindingNodes(TileMaster tileMaster)
+    public static List<Node> GetPathfindingNodes(TileMaster tileMaster)
     {
         var bounds = tileMaster.tilemap.cellBounds;
-        var nodes = new List<PathfindingNode>();
+        var nodes = new List<Node>();
         for (int x = bounds.xMin; x < bounds.xMax; x++)
         {
             for (int y = bounds.yMin; y < bounds.yMax; y++)
@@ -26,11 +28,11 @@ public static class Pathfinding
                 var tile = tileMaster.tilemap.GetTile<Tile>(new Vector3Int(x, y, 0));
                 if (tile != null)
                 {
-                    var node = new PathfindingNode();
+                    var node = new Node();
                     node.x = x;
                     node.y = y;
                     node.entranceCost = tileMaster.GetTileCost(tile);
-                    node.neighbors = new HashSet<PathfindingNode>();
+                    node.neighbors = new HashSet<Node>();
                     nodes.Add(node);
                 }
             }
@@ -38,7 +40,7 @@ public static class Pathfinding
         
         foreach (var node in nodes)
         {
-            List<PathfindingNode> nullishNeighbors = new()
+            List<Node> nullishNeighbors = new()
             {
                 nodes.Find(n => n.x == node.x - 1 && n.y == node.y),
                 nodes.Find(n => n.x == node.x + 1 && n.y == node.y),
@@ -57,9 +59,9 @@ public static class Pathfinding
         return nodes;
     }
     
-    static List<PathfindingNode> ReconstructPath(IReadOnlyDictionary<PathfindingNode, PathfindingNode> cameFrom, PathfindingNode current)
+    static List<Node> ReconstructPath(IReadOnlyDictionary<Node, Node> cameFrom, Node current)
     {
-        var totalPath = new List<PathfindingNode>{current};
+        var totalPath = new List<Node>{current};
         while (cameFrom.ContainsKey(current))
         {
             current = cameFrom[current];
@@ -69,22 +71,21 @@ public static class Pathfinding
         return totalPath;
     }
     
-    public static List<PathfindingNode> FindPath(PathfindingNode start, PathfindingNode end)
+    public static List<Node> FindPath(Node start, Node end)
     {
-        float H(PathfindingNode node) => Vector2.Distance(new Vector2(node.x, node.y), new Vector2(end.x, end.y));
+        float H(Node node) => Vector2.Distance(new Vector2(node.x, node.y), new Vector2(end.x, end.y));
         
-        var gScore = new Utils.DefaultDictionary<PathfindingNode, float>(float.PositiveInfinity);
+        var gScore = new Utils.DefaultDictionary<Node, float>(float.PositiveInfinity);
         gScore[start] = 0;
         
-        var fScore = new Utils.DefaultDictionary<PathfindingNode, float>(float.PositiveInfinity);
+        var fScore = new Utils.DefaultDictionary<Node, float>(float.PositiveInfinity);
         fScore[start] = H(start);
         
-        var openSet = new SortedSet<PathfindingNode>(Comparer<PathfindingNode>.Create(
+        var openSet = new SortedSet<Node>(Comparer<Node>.Create(
             (a, b) => fScore[a].CompareTo(fScore[b]))) {start};
         
-        var cameFrom = new Dictionary<PathfindingNode, PathfindingNode>();
+        var cameFrom = new Dictionary<Node, Node>();
 
-        Debug.Log($"beginning pathfinding, openSet has {openSet.Count} items");
         while (openSet.Count > 0)
         {
             var current = openSet.Min;
@@ -94,7 +95,6 @@ public static class Pathfinding
             }
 
             openSet.Remove(current);
-            Debug.Log($"Node {current.x}-{current.y} has {current.neighbors.Count} neighbors");
             foreach (var neighbor in current.neighbors)
             {
                 var tentativeGScore = gScore[current] + neighbor.entranceCost;

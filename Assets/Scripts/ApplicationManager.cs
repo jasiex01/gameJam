@@ -4,15 +4,17 @@ using UnityEngine.SceneManagement;
 
 public class ApplicationManager : MonoBehaviour {
 	
-	public void Start()
+	public void StartGame()
 	{
-		Debug.Log("HELLO");
+		Debug.Log("Go to intro");
+		SceneManager.LoadScene("Intro1");  
 	}
 
 	public void Tutorial()
 	{
 		Debug.Log("Tutorial");
 	}
+
 
 	public void ToIntro()
 	{
@@ -28,6 +30,7 @@ public class ApplicationManager : MonoBehaviour {
 	{
 		SceneManager.LoadScene("Tutorial");
 	}
+
 
 	public void Quit () 
 	{

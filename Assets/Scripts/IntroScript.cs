@@ -64,6 +64,4 @@ public class IntroScript : MonoBehaviour
     {
         SceneManager.LoadScene("Game");  
     }
-
-
 }
