@@ -1,11 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using ScriptableObjects;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Hero : MonoBehaviour
 {

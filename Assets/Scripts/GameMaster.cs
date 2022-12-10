@@ -1,5 +1,6 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
+using ScriptableObjects.Cards;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,9 +9,14 @@ public class GameMaster : MonoBehaviour
     public TileMaster tileMaster;
     public CardMaster cardMaster;
     public GridCursor cursor;
-    private ScriptableObjects.Cards.Card activeCard;
+    private Card activeCard;
 
     public List<Hero> heroes;
+
+    public bool IsCellAValidTarget(Vector3Int cell, Card card)
+    {
+        throw new NotImplementedException();
+    }
     
     void Start()
     {
