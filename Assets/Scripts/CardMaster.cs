@@ -19,6 +19,9 @@ public class CardMaster : MonoBehaviour
     public DOTweenAnimationTemplate cardMoveAnimation;
     public DOTweenAnimationTemplate cardScaleAnimation;
 
+    public int cardsToPlayInOneTurn = 2;
+    public int cardsPlayedThisTurn = 0;
+
     public Deck deckTemplate;
     public List<Card> deck = new ();
 
@@ -91,17 +94,34 @@ public class CardMaster : MonoBehaviour
         }
     }
 
-    public void OnCardClicked(UICard uiCard){
-        uiCard.transform.DOScale(new Vector3(1.2f,1.2f,1.2f), cardScaleAnimation.duration);
-
-        activeUiCard = uiCard;
-        GameMaster.Instance.OnCardClicked(uiCard);
-        
-        foreach (var c in uiCards)
+    public void ClearHand()
+    {
+        for (int i = 0; i < uiCards.Count; i++)
         {
-            if (c != uiCard)
+            int x = i;
+            uiCards[i].transform.DOScale(Vector3.zero, 0.3f).OnComplete(() =>
             {
-                c.transform.DOScale(new Vector3(0.8f,0.8f,0.8f), cardScaleAnimation.duration);
+                Destroy(uiCards[x].gameObject);
+            });
+        }
+
+        uiCards.Clear();
+    }
+
+    public void OnCardClicked(UICard uiCard){
+        if (cardsPlayedThisTurn < cardsToPlayInOneTurn)
+        {
+            uiCard.transform.DOScale(new Vector3(1.2f,1.2f,1.2f), cardScaleAnimation.duration);
+
+            activeUiCard = uiCard;
+            GameMaster.Instance.OnCardClicked(uiCard);
+        
+            foreach (var c in uiCards)
+            {
+                if (c != uiCard)
+                {
+                    c.transform.DOScale(new Vector3(0.8f,0.8f,0.8f), cardScaleAnimation.duration);
+                }
             }
         }
     }

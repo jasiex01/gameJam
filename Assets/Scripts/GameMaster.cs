@@ -2,10 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using ScriptableObjects.Cards;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
+using Random = UnityEngine.Random;
 
 public class GameMaster : MonoBehaviour
 {
@@ -18,6 +20,9 @@ public class GameMaster : MonoBehaviour
 
     public List<Vector3Int> entryPoints;
     public Vector3Int exitPoint;
+    
+    public AudioSource audioSource;
+    public AudioClip music;
 
     public bool IsCellAValidTarget(Vector3Int cell, Card card)
     {
@@ -26,14 +31,14 @@ public class GameMaster : MonoBehaviour
         {
             return false;
         }
-        
+
         var tileGameData = TileMaster.Instance.GetTileGameData(tile);
-        
+
         switch (card)
         {
             case MonsterCard:
                 return heroes.Any(hero => hero.currentCell == cell);
-            
+
             case LureCard:
                 return tileGameData.passable && heroes.Any(hero =>
                 {
@@ -43,18 +48,19 @@ public class GameMaster : MonoBehaviour
                            heroCell == cell + Vector3Int.left ||
                            heroCell == cell + Vector3Int.right;
                 });
-            
+
             case TrapCard:
-                return tileGameData.passable && heroes.All(hero => hero.currentCell != cell);;
-            
+                return tileGameData.passable && heroes.All(hero => hero.currentCell != cell);
+                ;
+
             case ObstacleCard:
                 throw new NotImplementedException();
-            
+
             default:
                 throw new NotSupportedException();
         }
     }
-    
+
     void UseCard(Card card, Vector3Int cell)
     {
         if (!IsCellAValidTarget(cell, card)) return;
@@ -75,7 +81,11 @@ switch (card)
                 print($"Will deal {damage} damage to {hitHeroes.Count()} heroes");
                 for (int i = 0; i < damage; i++)
                 {
-                    var maxStrength = hitHeroes.Max(hero => hero.currentStrength);
+                    if (!hitHeroes.Any())
+                    {
+                        return;
+                    }
+                    var maxStrength = hitHeroes.Where(hero => hero != null).Max(hero => hero.currentStrength);
                     hitHeroes.First(hero => hero.currentStrength == maxStrength).TakeDamage(1);
                 }
                 break;
@@ -107,11 +117,21 @@ switch (card)
     private void Awake()
     {
         Instance = this;
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Start()
     {
         CardMaster.Instance.DrawNewHand();
+        
+        // var startingCell = entryPoints[Random.Range(0, entryPoints.Count)];
+        foreach (var hero in heroes)
+        {
+            hero.goal = exitPoint;
+            hero.Move(hero.currentCell);
+        }
+        
+        audioSource.PlayOneShot(music);
     }
     
     void Update()
@@ -129,6 +149,11 @@ switch (card)
                 {
                     UseCard(activeCard, cursor.cell);
                     CardMaster.Instance.RemoveActiveCard();
+                    CardMaster.Instance.cardsPlayedThisTurn += 1;
+                    if (CardMaster.Instance.cardsPlayedThisTurn >= CardMaster.Instance.cardsToPlayInOneTurn)
+                    {
+                        CardMaster.Instance.ClearHand();
+                    }
                     CardInfo.Instance.UpdateInfo(null);
                     activeCard = null;
                 }
@@ -147,6 +172,7 @@ switch (card)
 
     public void EndTurn()
     {
+        CardMaster.Instance.cardsPlayedThisTurn = 0;
         CardMaster.Instance.DrawNewHand();
         activeCard = null;
         cursor.ChangeVisibility(false);
@@ -159,6 +185,13 @@ switch (card)
     public void CheckForWin(){
         if(heroes.Count == 0){
             SceneManager.LoadScene("Win");
+        }
+    }
+    
+    public void CheckForLose(){
+        if(heroes.Any(h => h.currentCell == exitPoint))
+        {
+            SceneManager.LoadScene("Lose");
         }
     }
 }

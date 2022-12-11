@@ -21,6 +21,7 @@ public class Hero : MonoBehaviour
     public int currentStrength;
     public Class @class;
     
+    [HideInInspector]
     public Vector3Int goal;
 
     public void OnEndTurn()
@@ -41,6 +42,7 @@ public class Hero : MonoBehaviour
         Debug.Log(direction);
         
         Move(currentCell + direction);
+        GameMaster.Instance.CheckForLose();
     }
 
     public void Move(Vector3Int cell)
@@ -56,11 +58,6 @@ public class Hero : MonoBehaviour
     public Vector3Int currentCell;
 
     public DOTweenAnimationTemplate moveAnimation;
-
-    private void Start()
-    {
-        transform.position = tileMaster.tilemap.GetCellCenterWorld(currentCell);
-    }
 
     public void TakeDamage(int damage)
     {
