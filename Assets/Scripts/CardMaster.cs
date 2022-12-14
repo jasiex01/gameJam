@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using ScriptableObjects;
 using DG.Tweening;
+using ScriptableObjects.Cards;
 
 public class CardMaster : MonoBehaviour
 {
@@ -16,11 +18,52 @@ public class CardMaster : MonoBehaviour
     public float spacing;
     public DOTweenAnimationTemplate cardMoveAnimation;
     public DOTweenAnimationTemplate cardScaleAnimation;
-    public GameMaster gameMaster;
+
+    public int cardsToPlayInOneTurn = 2;
+    public int cardsPlayedThisTurn = 0;
+
+    public Deck deckTemplate;
+    public List<Card> deck = new ();
 
     private void Awake()
     {
         Instance = this;
+    }
+
+    public Card DrawCard()
+    {
+        if (deck.Count == 0)
+        {
+            deck = new List<Card>(deckTemplate.deck);
+            deck.Shuffle();
+        }
+
+        var card = deck[0];
+        deck.RemoveAt(0);
+        return card;
+    }
+
+    public void DrawNewHand()
+    {
+        for (int i = 0; i < uiCards.Count; i++)
+        {
+            uiCards[i].transform.DOKill();
+            Destroy(uiCards[i].gameObject);
+        }
+
+        uiCards.Clear();
+        
+        for (int i = 0; i < initialCardCount; i++)
+        {
+            var card = DrawCard();
+            var uiCard = Instantiate(cardPrefab, anchor);
+            uiCard.cardMaster = this;
+            uiCard.card = card;
+            uiCard.transform.localPosition = new Vector3(0,-300,0);
+            uiCards.Add(uiCard);
+        }
+        
+        UpdateCards();
     }
 
     public void ResetCards() {
@@ -51,17 +94,34 @@ public class CardMaster : MonoBehaviour
         }
     }
 
-    public void OnCardClicked(UICard uiCard){
-        uiCard.transform.DOScale(new Vector3(1.2f,1.2f,1.2f), cardScaleAnimation.duration);
-
-        activeUiCard = uiCard;
-        gameMaster.OnCardClicked(uiCard);
-        
-        foreach (var c in uiCards)
+    public void ClearHand()
+    {
+        for (int i = 0; i < uiCards.Count; i++)
         {
-            if (c != uiCard)
+            int x = i;
+            uiCards[i].transform.DOScale(Vector3.zero, 0.3f).OnComplete(() =>
             {
-                c.transform.DOScale(new Vector3(0.8f,0.8f,0.8f), cardScaleAnimation.duration);
+                Destroy(uiCards[x].gameObject);
+            });
+        }
+
+        uiCards.Clear();
+    }
+
+    public void OnCardClicked(UICard uiCard){
+        if (cardsPlayedThisTurn < cardsToPlayInOneTurn)
+        {
+            uiCard.transform.DOScale(new Vector3(1.2f,1.2f,1.2f), cardScaleAnimation.duration);
+
+            activeUiCard = uiCard;
+            GameMaster.Instance.OnCardClicked(uiCard);
+        
+            foreach (var c in uiCards)
+            {
+                if (c != uiCard)
+                {
+                    c.transform.DOScale(new Vector3(0.8f,0.8f,0.8f), cardScaleAnimation.duration);
+                }
             }
         }
     }

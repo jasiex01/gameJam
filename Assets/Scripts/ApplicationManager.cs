@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
@@ -16,10 +15,22 @@ public class ApplicationManager : MonoBehaviour {
 		Debug.Log("Tutorial");
 	}
 
-	public void BackToMenu() 
+
+	public void ToIntro()
+	{
+		SceneManager.LoadScene("Intro1");  
+	}
+
+	public void ToMenu()
 	{
 		SceneManager.LoadScene("Menu");
 	}
+
+	public void ToTutorial()
+	{
+		SceneManager.LoadScene("Tutorial");
+	}
+
 
 	public void Quit () 
 	{
